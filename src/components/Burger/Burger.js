@@ -30,6 +30,8 @@ const burger = (props) => {
         }
     });
 
+    /** My awesome code is above here */
+
     console.log(myIngredients);
     console.log(transformedIngredients);
 
