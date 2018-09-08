@@ -19,7 +19,7 @@ const burger = (props) => {
         transformedIngredients = <p>Please start adding ingredients</p>;
     }
 
-    /** Re-written my way :) */
+    /** Re-written my way :) Some Master updates */
 
     const myIngredients = [];
     Object.keys(props.ingredients).forEach((v,i)=>{
