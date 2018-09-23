@@ -19,7 +19,7 @@ const burger = (props) => {
         transformedIngredients = <p>Please start adding ingredients</p>;
     }
 
-    /** Re-written my way :) Some Master updates */
+    /** Re-written my way :) */
 
     const myIngredients = [];
     Object.keys(props.ingredients).forEach((v,i)=>{
@@ -31,9 +31,6 @@ const burger = (props) => {
     });
 
     /** My awesome code is above here */
-
-    console.log(myIngredients);
-    console.log(transformedIngredients);
 
     return(
         <div className={classes.Burger}>

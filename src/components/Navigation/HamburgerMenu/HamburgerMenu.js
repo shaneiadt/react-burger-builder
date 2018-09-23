@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './HamburgerMenu.css';
-import Aux from '../../../hoc/Aux';
+import Aux from '../../../hoc/Aux/Aux';
 
 const hamburgerMenu = (props) => {
     return (
