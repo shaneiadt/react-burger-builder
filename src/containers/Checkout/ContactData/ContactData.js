@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import classes from './ContactData.css';
 import axios from '../../../axios-orders';
 
+import { connect } from 'react-redux';
+
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Button from '../../../components/UI/Button/Button';
 import Input from '../../../components/UI/Input/Input';
@@ -102,11 +104,11 @@ class ContactData extends Component {
         event.preventDefault();
         this.setState({ loading: true });
         const formData = {};
-        for(let formElementId in this.state.orderForm){
+        for (let formElementId in this.state.orderForm) {
             formData[formElementId] = this.state.orderForm[formElementId].value;
         }
         const order = {
-            ingredients: this.props.ingredients,
+            ingredients: this.props.ings,
             price: this.props.price,
             orderData: formData
         };
@@ -120,14 +122,14 @@ class ContactData extends Component {
             });
     }
 
-    checkValidity(value, rules){
+    checkValidity(value, rules) {
         let isValid = true;
 
-        if(rules.required){
+        if (rules.required) {
             isValid = value.trim() !== '' && isValid;
         }
 
-        if(rules.minLength && rules.maxLength){
+        if (rules.minLength && rules.maxLength) {
             isValid = (value.length >= rules.minLength && value.length <= rules.maxLength) && isValid;
         }
 
@@ -147,11 +149,11 @@ class ContactData extends Component {
         updatedOrderForm[inputIdentifier] = updatedOrderFormElement;
 
         let formIsValid = true;
-        for(let id in updatedOrderForm){
+        for (let id in updatedOrderForm) {
             formIsValid = updatedOrderForm[id].valid && formIsValid;
         }
 
-        this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid});
+        this.setState({ orderForm: updatedOrderForm, formIsValid: formIsValid });
     }
 
     render() {
@@ -193,4 +195,11 @@ class ContactData extends Component {
     }
 }
 
-export default ContactData;
+const mapStateToProps = state => {
+    return{
+        ings: state.ingredients,
+        price: state.totalPrice
+    };
+};
+
+export default connect(mapStateToProps)(ContactData);

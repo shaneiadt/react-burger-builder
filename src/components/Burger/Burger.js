@@ -20,14 +20,14 @@ const burger = (props) => {
 
     /** Re-written my way :) */
 
-    const myIngredients = [];
-    Object.keys(props.ingredients).forEach((v, i) => {
-        let j = 0;
-        while (j < props.ingredients[v]) {
-            myIngredients.push(<BurgerIngredient key={v + j} type={v} />);
-            j++;
-        }
-    });
+    // const myIngredients = [];
+    // Object.keys(props.ingredients).forEach((v, i) => {
+    //     let j = 0;
+    //     while (j < props.ingredients[v]) {
+    //         myIngredients.push(<BurgerIngredient key={v + j} type={v} />);
+    //         j++;
+    //     }
+    // });
 
     /** My awesome code is above here */
 
