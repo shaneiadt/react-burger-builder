@@ -23,9 +23,6 @@ export const authFail = (error) => {
 }
 
 export const logout = () => {
-    // localStorage.removeItem('token');
-    // localStorage.removeItem('expirationDate');
-    // localStorage.removeItem('userId');
     return {
         type: actionTypes.AUTH_INIT_LOGOUT
     };
@@ -61,19 +58,7 @@ export const setAuthRedirectPath = (path) => {
 };
 
 export const authCheckState = () => {
-    return dispatch => {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            dispatch(logout());
-        } else {
-            const expDate = new Date(localStorage.getItem('expirationDate'));
-            if (expDate > new Date()) {
-                const userId = localStorage.getItem('userId');
-                dispatch(authSuccess(token, userId));
-                dispatch(checkAuthTimeout((expDate.getTime() - new Date().getTime()) / 1000));
-            } else {
-                dispatch(logout());
-            }
-        }
+    return {
+        type: actionTypes.AUTH_CHECK_INIT_STATE
     };
 };
